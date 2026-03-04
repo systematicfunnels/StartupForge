@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --brand: #00D4FF;
+    --brand-purple: #A78BFA;
+    --brand-green: #34D399;
+    --brand-amber: #F59E0B;
+    --bg-base: #080B14;
+    --bg-surface: #0F1624;
+    --bg-elevated: #131929;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  ::-webkit-scrollbar { width: 4px; height: 4px; }
+  ::-webkit-scrollbar-track { background: #0F1624; }
+  ::-webkit-scrollbar-thumb { background: #1E293B; border-radius: 2px; }
+  ::-webkit-scrollbar-thumb:hover { background: #334155; }
+}
+
+@layer components {
+  .card {
+    @apply bg-[#0F1624] border border-white/[0.07] rounded-xl;
+  }
+  .card-hover {
+    @apply card transition-all duration-200 hover:border-white/[0.12] hover:bg-[#111827];
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 font-semibold rounded-lg
+           transition-all duration-150 disabled:opacity-50 disabled:cursor-not-allowed
+           cursor-pointer text-sm px-4 py-2.5 select-none;
+  }
+  .btn-primary {
+    @apply btn bg-[#00D4FF] text-[#080B14] hover:bg-[#00BFE8] active:scale-[0.97];
+  }
+  .btn-secondary {
+    @apply btn bg-white/[0.05] text-slate-300 border border-white/[0.09]
+           hover:bg-white/[0.09] hover:text-white active:scale-[0.97];
+  }
+  .btn-ghost {
+    @apply btn text-slate-400 hover:text-white hover:bg-white/[0.05] active:scale-[0.97];
+  }
+  .btn-danger {
+    @apply btn bg-red-500/10 text-red-400 border border-red-500/20
+           hover:bg-red-500/20 active:scale-[0.97];
+  }
+  .input {
+    @apply w-full bg-white/[0.04] border border-white/[0.09] rounded-lg px-4 py-3 text-sm
+           text-slate-200 placeholder:text-slate-600 font-mono
+           focus:outline-none focus:border-[#00D4FF]/50 focus:ring-1 focus:ring-[#00D4FF]/20
+           transition-all duration-150;
+  }
+  .label {
+    @apply block text-[11px] font-semibold text-slate-400 mb-1.5 tracking-widest uppercase font-mono;
+  }
+  .badge {
+    @apply inline-flex items-center gap-1 text-[11px] font-semibold px-2.5 py-0.5 rounded-full font-mono;
+  }
+  .badge-success { @apply badge bg-emerald-500/15 text-emerald-400 border border-emerald-500/20; }
+  .badge-warning { @apply badge bg-amber-500/15 text-amber-400 border border-amber-500/20; }
+  .badge-info    { @apply badge bg-[#00D4FF]/10 text-[#00D4FF] border border-[#00D4FF]/20; }
+  .badge-error   { @apply badge bg-red-500/10 text-red-400 border border-red-500/20; }
+  .badge-muted   { @apply badge bg-white/5 text-slate-500 border border-white/10; }
+  .badge-purple  { @apply badge bg-violet-500/15 text-violet-400 border border-violet-500/20; }
+}
+
+/* ── Gradient text ─────────────────────────────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #00D4FF 0%, #A78BFA 55%, #34D399 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Skeleton shimmer ──────────────────────────────────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+.skeleton {
+  background: linear-gradient(90deg, #0F1624 25%, #16202e 50%, #0F1624 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.6s infinite;
+}
+
+/* ── Fade in ───────────────────────────────────────────────────────────────── */
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-in { animation: fadeSlideIn 0.3s ease forwards; }
+
+/* ── Spin ──────────────────────────────────────────────────────────────────── */
+@keyframes spin { to { transform: rotate(360deg); } }
+.animate-spin { animation: spin 0.9s linear infinite; }
+
+/* ── Glow pulse ────────────────────────────────────────────────────────────── */
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.4; }
+  50%       { opacity: 1;   }
+}
+.glow-pulse { animation: glowPulse 2s ease-in-out infinite; }
+
+/* ── Grid background ───────────────────────────────────────────────────────── */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+  background-size: 44px 44px;
+}

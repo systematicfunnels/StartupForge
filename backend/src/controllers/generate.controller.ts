@@ -54,7 +54,6 @@ export async function getStatus(req: Request, res: Response, next: NextFunction)
     try {
       const payload = await verifyToken(token, {
         secretKey: process.env.CLERK_SECRET_KEY!,
-        issuer: (iss: string) => iss.includes('.clerk.'),
       });
       userId = payload.sub;
     } catch {
